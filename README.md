@@ -76,5 +76,3 @@ This report contains:
 
 ---
 
-## 📁 Project Structure
-
