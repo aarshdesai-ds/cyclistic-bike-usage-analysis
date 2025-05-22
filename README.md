@@ -8,7 +8,7 @@ All analysis was performed using **Google Sheets**, and findings are documented 
 
 ## 📘 Summary Report
 
-📄 [**Download Full PDF Summary**](Cyclistic_Bike_Data_Analysis.pdf)
+📄 [**Download Full PDF Summary**](Cyclistic Bike Data Analysis.pdf)
 
 This report contains:
 - Data source and cleaning methodology
@@ -76,3 +76,10 @@ This report contains:
 
 ---
 
+## 🎯 Recommendations
+
+- 🎯 Focus on converting casual users with targeted weekend and electric bike promotions.
+- 📆 Optimize bike availability based on peak weekday patterns.
+- 📣 Encourage membership signups through usage-based incentives (e.g., "You rode 3 times this month—unlock more with a membership").
+
+---
