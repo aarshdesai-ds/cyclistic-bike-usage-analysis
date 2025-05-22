@@ -8,7 +8,8 @@ All analysis was performed using **Google Sheets**, and findings are documented 
 
 ## 📘 Summary Report
 
-📄[Download Full PDF Summary]("Cyclistic Bike Data Analysis.pdf")
+[Download Full PDF Summary](Cyclistic_Bike_Data_Analysis.pdf)
+
 
 
 This report contains:
