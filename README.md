@@ -1,87 +1,113 @@
-# 🚲 Cyclistic Bike Usage Analysis (January–April 2024)
+# Cyclistic Bike Usage Analysis — January to April 2024
 
-This project explores the behavioral differences between **casual riders** and **annual members** using real-world bike-share data from Cyclistic. The primary business goal is to uncover data-driven insights that can help convert casual riders into long-term members.
+This project examines how casual riders and annual members use Cyclistic's bike-share service differently, with the goal of identifying data-driven strategies to convert casual riders into long-term members.
 
-All analysis was performed using **Google Sheets**, and findings are documented in a detailed PDF report.
-
----
-
-## 📘 Summary Report
-
-[Download Full PDF Summary](Cyclistic_Bike_Data_Analysis.pdf)
-
-
-
-This report contains:
-- Data source and cleaning methodology
-- Pivot table-driven visual analysis
-- Key comparisons (ride length, frequency, bike type)
-- Clear month-by-month insights
+The analysis was originally performed in Google Sheets and documented in a full PDF report. This repository also includes a Python notebook that replicates the analysis using pandas, with structured markdown documentation throughout.
 
 ---
 
-## 🎯 Business Objective
+## Contents
 
-> Help Cyclistic design better membership marketing strategies by understanding how **casual riders use the service differently from annual members**.
+| File | Description |
+|------|-------------|
+| `Cyclistic_Bike_Analysis.ipynb` | Python analysis notebook with full code and markdown documentation |
+| `Cyclistic_Bike_Data_Analysis.pdf` | Original Google Sheets analysis exported as a detailed report |
 
 ---
 
-## 📅 Data Overview
+## Business Objective
+
+Determine how casual riders use Cyclistic bikes differently from annual members to help the marketing team design targeted conversion strategies.
+
+---
+
+## Data Overview
 
 - **Time Period**: January to April 2024
-- **Source**: Internal Cyclistic trip data
-- **Total Columns Used**:
-  - `Ride ID`
-  - `Ride Type` (classic or electric)
-  - `Start Time`, `End Time`
-  - `User Type` (casual or member)
+- **Source**: Internal Cyclistic trip records
+- **Columns Used**:
 
-### 🔧 Derived Columns:
-- `Ride Length` (calculated as `End Time – Start Time`)
-- `Weekday` (0 = Sunday, 1 = Monday, … 6 = Saturday)
+| Column | Description |
+|--------|-------------|
+| `ride_id` | Unique identifier for each trip |
+| `rideable_type` | Bike category — classic or electric |
+| `started_at` | Trip start timestamp |
+| `ended_at` | Trip end timestamp |
+| `member_casual` | User type — casual rider or annual member |
 
----
+**Derived Columns**:
 
-## 📊 Dimensions Analyzed
-
-| Dimension                | Description                                      |
-|--------------------------|--------------------------------------------------|
-| Ride Length vs Bike Type | Avg. time by user type and bike type            |
-| Ride Length vs Weekday   | Avg. time by day for casuals vs. members        |
-| Rides by Weekday         | Count of rides by user type and day of week     |
-| Rides by User Type       | Proportion of total monthly rides by user type  |
-| Rides by Bike Type       | Preferences for electric/classic per month      |
+| Column | Method |
+|--------|--------|
+| `ride_length` | `ended_at` minus `started_at`, in minutes |
+| `day_of_week` | Extracted from `started_at` (0 = Monday … 6 = Sunday) |
+| `month` | Month name extracted from `started_at` |
 
 ---
 
-## 📈 Key Insights
+## Analysis Dimensions
 
-1. **Ride Duration**:
-   - Casual riders drove both bike types for **longer durations** than members across all months.
-   - Classic bikes were consistently used for longer rides by both groups.
-
-2. **Daily Patterns**:
-   - Casual riders drove **longer on every weekday** compared to members.
-   - Casuals peaked in ride length on **Sundays**, while members were most active on **Wednesdays** and **Sundays**.
-
-3. **Ride Volume**:
-   - Members made **more rides every day** than casual riders, across all months.
-   - Peak ride counts for members occurred mid-week, while casual riders peaked on **weekends**.
-
-4. **Ride Share**:
-   - Casual riders accounted for **<30%** of total monthly rides.
-   - Despite longer average rides, casuals contributed fewer total rides each month.
-
-5. **Bike Preferences**:
-   - Casual riders **preferred electric bikes** overall, except in **February**, where they chose classic bikes.
-   - Members preferred **classic bikes in January and February**, but switched to **electric bikes in March and April**.
+| Dimension | Description |
+|-----------|-------------|
+| Ride Length vs Bike Type | Average ride duration by user type and bike category, per month |
+| Ride Length vs Weekday | Average ride duration by day of the week for each user type |
+| Rides by Weekday | Total ride count by user type and day of the week |
+| Rides by User Type | Monthly share of rides attributed to casual riders vs members |
+| Rides by Bike Type | Bike category preferences (classic vs electric) per user type per month |
 
 ---
 
-## 🎯 Recommendations
+## Key Findings
 
-- 🎯 Focus on converting casual users with targeted weekend and electric bike promotions.
-- 📆 Optimize bike availability based on peak weekday patterns.
-- 📣 Encourage membership signups through usage-based incentives (e.g., "You rode 3 times this month—unlock more with a membership").
+### Ride Duration
+
+- Casual riders rode both classic and electric bikes for longer average durations than members in all four months.
+- Classic bikes produced longer average rides than electric bikes for both user types, across every month.
+- This pattern held consistently without exception from January through April.
+
+### Weekday Patterns
+
+- Casual riders averaged longer ride times than members on every single weekday in every month.
+- In March and April, casual riders peaked in average ride length on **Sundays**.
+- In January, casual riders peaked on **Mondays**; in February, on **Sundays**.
+- Members peaked on **Wednesdays** in January and on **Sundays** in February through April.
+- Both user types recorded their shortest average rides mid-week and their longest on weekends (March–April).
+
+### Ride Volume
+
+- Members made more rides than casual riders on every day of the week across all four months.
+- Members' ride counts peaked mid-week — **Wednesdays** in March and April.
+- Casual riders' ride counts peaked on **Saturdays** in March and April.
+- In January and February, both groups concentrated rides mid-week (Wednesdays and Thursdays).
+
+### Ride Share
+
+- Annual members accounted for **more than 75%** of total rides in January and February.
+- Casual riders remained **below 30%** of monthly ride volume across all four months.
+- The casual rider share increased incrementally each month — lowest in January, highest in April — suggesting seasonal growth as weather improved.
+
+### Bike Type Preferences
+
+- Casual riders preferred electric bikes in January, March, and April; they switched to classic bikes in **February**.
+- Members preferred classic bikes in January and February, then shifted to electric bikes in **March and April**.
+- In both March and April, members made significantly more rides in both bike categories than casual riders.
 
 ---
+
+## Recommendations
+
+- **Weekend and electric bike promotions for casual riders.** Casual riders peak on Saturdays and prefer electric bikes in three of four months. Targeted promotions tied to weekend electric rides offer the highest conversion surface.
+- **Usage-based membership prompts.** Casual riders who log three or more rides in a month are strong candidates for membership conversion. Triggered in-app prompts at this threshold could capture riders already habituating to the service.
+- **Seasonal fleet and marketing timing.** Casual rider share grows each month from January to April. Spring is the highest-leverage window for membership campaigns. Electric bike availability should scale up on weekends to meet casual demand; mid-week availability should prioritize members.
+
+---
+
+## Summary Report
+
+[Download Full PDF Report](Cyclistic_Bike_Data_Analysis.pdf)
+
+The report includes:
+- Data collection and cleaning methodology
+- Pivot table visualizations for all five analysis dimensions
+- Month-by-month breakdowns for January through April 2024
+- Annotated charts comparing casual riders and annual members
